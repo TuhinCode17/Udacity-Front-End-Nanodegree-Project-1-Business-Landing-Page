@@ -1,0 +1,486 @@
+
+/* =====================================================================
+   BODY STYLES
+   Base styles for entire page including font, colors, and layout
+   ===================================================================== */
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* =====================================================================
+   TOP CTA BAR - TOP RIGHT
+   Fixed position call-to-action bar with booking button
+   Uses fixed positioning to stay visible while scrolling
+   ===================================================================== */
+.cta-top {
+  position: fixed;          /* Stays in place when scrolling */
+  top: 20px;                /* Distance from top of viewport */
+  right: 20px;              /* Distance from right of viewport */
+  z-index: 2000;            /* Ensures it appears above page content */
+  display: flex;            /* Flexbox for horizontal layout */
+  align-items: center;      /* Vertically centers items */
+  gap: 15px;                /* Space between button and catchphrase */
+  background: rgba(255, 215, 0, 0.95); /* Gold with slight transparency */
+  padding: 12px 24px;
+  border-radius: 50px;      /* Fully rounded corners for pill shape */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);    /* Subtle shadow for depth */
+  backdrop-filter: blur(10px);  /* Subtle background blur for glass-like effect */
+}
+
+/* CTA Button Styles */
+.cta-button {
+  background: white;
+  color: #000;
+  padding: 10px 24px;
+  border-radius: 30px;      /* Rounded button shape */
+  text-decoration: none;    /* Remove underline from link */
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease; /* Smooth animation for hover effects */
+}
+
+/* CTA Button Hover Effect */
+.cta-button:hover {
+  transform: translateY(-3px);  /* Moves button up slightly */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Catchphrase Text Styles */
+.catchphrase {
+  color: #000;
+  font-style: italic;
+  font-size: 1rem;
+  white-space: nowrap;      /* Prevents text from wrapping to new line */
+}
+
+/* =====================================================================
+   STICKY NAVBAR
+   Navigation bar that sticks to top of viewport when scrolling
+   Uses semi-transparent background with blur effect
+   ===================================================================== */
+.sticky-header {
+  position: sticky;         /* Sticks to top when user scrolls down */
+  top: 0;                   /* Sticks at the very top */
+  background: rgba(17, 17, 17, 0.95); /* Dark semi-transparent background */
+  backdrop-filter: blur(10px);  /* Blur background content behind navbar */
+  z-index: 1000;            /* High z-index to appear above content */
+  width: 100%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+/* Navbar Container */
+.navbar {
+  max-width: 1200px;        /* Maximum width for large screens */
+  margin: 0 auto;           /* Centers navbar horizontally */
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;  /* Centers navigation items */
+  align-items: center;      /* Vertically centers items */
+  height: 70px;             /* Fixed height for consistency */
+}
+
+/* =====================================================================
+   HAMBURGER MENU (Mobile Only)
+   Three-line icon for mobile menu toggle
+   Hidden by default, shown only on small screens
+   ===================================================================== */
+.hamburger {
+  display: none;            /* Hidden on desktop, shown on mobile */
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* Hamburger Lines */
+.hamburger span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  margin: 6px 0;            /* Spacing between lines */
+  transition: 0.3s;         /* Smooth animation for transformation */
+}
+
+/* =====================================================================
+   NAVIGATION MENU
+   Horizontal list of navigation links
+   Transforms to vertical dropdown on mobile
+   ===================================================================== */
+.nav-menu {
+  display: flex;
+  list-style: none;         /* Removes bullet points */
+}
+
+/* Navigation Link Styles */
+.nav-menu a {
+  color: #eee;
+  text-decoration: none;
+  padding: 0 20px;
+  font-weight: 500;
+  transition: color 0.3s;   /* Smooth color change on hover */
+}
+
+/* Navigation Link Hover and Active States */
+.nav-menu a:hover,
+.nav-menu a.active {
+  color: #ffd700;           /* Gold color for hover/active state */
+}
+
+/* =====================================================================
+   MOBILE MENU TOGGLE
+   Controls visibility of mobile menu using CSS checkbox hack
+   When checkbox is checked, menu drops down
+   ===================================================================== */
+.menu-toggle:checked ~ .nav-menu { /* sibling selector reacts to checkbox state */
+  display: flex;
+  flex-direction: column;   /* Vertical layout for mobile */
+  position: absolute;
+  top: 70px;                /* Appears below navbar */
+  left: 0;
+  right: 0;
+  background: #111;         /* Dark background for dropdown */
+}
+
+/* =====================================================================
+   HERO SECTION
+   Large banner section with background image overlay
+   Contains main heading and call-to-action
+   ===================================================================== */
+.hero {
+  position: relative;       /* Needed for absolute positioning of overlay */
+  height: 90vh;             /* Takes up 90% of viewport height */
+  background: url('../images/hero-image.jpg') center/cover no-repeat; /* Background image */
+  display: flex;
+  align-items: center;      /* Vertically centers content */
+  justify-content: flex-start;  /* Keeps hero content anchored to the left side */
+  color: white;
+  text-align: left;
+}
+
+/* Dark overlay to improve text contrast on background image */
+.hero::before {
+  content: '';              /* Required for pseudo-element to render */
+  position: absolute;       /* Enables the overlay to sit on top of the hero background */
+  top: 0; left: 0; right: 0; bottom: 0; /* Anchors all edges so the overlay fills the hero area */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
+  z-index: 1;               /* Places overlay above background but below content */
+}
+
+/* Hero Content Container */
+.hero-content {
+  position: relative;       /* Needed to place above overlay */
+  z-index: 2;               /* Appears above the dark overlay */
+  max-width: 600px;
+  margin-left: 3rem;        /* Left spacing from edge */
+  padding: 2rem;
+}
+
+/* Hero Main Heading */
+.hero h1 {
+  font-size: 3.5rem;        /* Large, attention-grabbing size */
+  margin-bottom: 1rem;
+  line-height: 1.2;         /* Tight line spacing for readability */
+}
+
+/* Hero Secondary Heading */
+.hero h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;             /* Slightly transparent for hierarchy */
+}
+
+/* Hero Description Text */
+.description-of-business {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+/* Hero Call-to-Action Button */
+.hero-cta {
+  display: inline-block;
+  background: #ffd700;      /* Gold background */
+  color: #000;
+  padding: 14px 32px;
+  border-radius: 50px;      /* Fully rounded pill shape */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: all 0.3s;     /* Smooth hover animation */
+}
+
+/* Hero CTA Hover Effect */
+.hero-cta:hover {
+  background: white;        /* Changes to white on hover */
+  transform: translateY(-5px);  /* Lifts button up */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+}
+
+/* Hide Inline Hero Image (background is used instead) */
+.hero-image {
+  display: none;
+}
+
+/* =====================================================================
+   WHY CHOOSE US SECTION
+   Features section showcasing clinic benefits
+   Uses card-based layout with hover effects
+   ===================================================================== */
+.why-choose-us {
+  padding: 80px 20px;       /* Generous vertical and horizontal padding */
+  text-align: center;
+  background: white;
+}
+
+/* Section Heading */
+.why-choose-us h2 {
+  font-size: 2.8rem;
+  color: #003366;           /* Dark blue color */
+  margin-bottom: 60px;      /* Space before cards */
+}
+
+/* Card Container - Responsive Flex Layout */
+.card-container {
+  display: flex;
+  flex-direction: column;   /* Vertical stack on mobile */
+  gap: 30px;                /* Space between cards */
+  max-width: 1200px;
+  margin: 0 auto;           /* Centers container */
+}
+
+/* Individual Feature Card */
+.feature-card {
+  background: white;
+  border-radius: 16px;      /* Rounded corners */
+  overflow: hidden;         /* Keeps content inside rounded corners */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  transition: all 0.4s ease; /* Smooth animation for hover */
+}
+
+/* Feature Card Hover Effect */
+.feature-card:hover {
+  transform: translateY(-15px);  /* Lifts card up on hover */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+/* Feature Card Heading */
+.feature-card h3 {
+  background: #003366;      /* Dark blue background */
+  color: white;
+  padding: 25px;
+  font-size: 1.4rem;
+}
+
+/* Feature Card Description */
+.feature-card p {
+  padding: 30px;
+  font-size: 1.1rem;
+  color: #444;              /* Dark gray text */
+}
+
+/* =====================================================================
+   TESTIMONIALS TEASER SECTION
+   Displays patient testimonials to build trust
+   Responsive grid layout for testimonial cards
+   ===================================================================== */
+.testimonials-teaser {
+  padding: 80px 20px;
+  background: #f8f9fa;      /* Light gray background */
+  text-align: center;
+}
+
+/* Section Heading */
+.testimonials-teaser h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #003366;
+}
+
+/* Testimonial Grid Container */
+.testimonial-grid {
+  display: flex;
+  flex-direction: column;   /* Vertical stack on mobile */
+  gap: 30px;                /* Space between testimonials */
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Individual Testimonial Card */
+.testimonial {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+  font-style: italic;       /* Italicized testimonial text */
+  font-size: 1.1rem;
+}
+
+/* Testimonial Attribution (Name and Location) */
+.testimonial cite {
+  display: block;
+  margin-top: 15px;
+  font-style: normal;       /* Not italicized */
+  color: #b8860b;           /* Dark goldenrod color */
+  font-weight: bold;
+}
+
+/* View All Testimonials Link */
+.view-all-testimonials {
+  display: inline-block;
+  margin-top: 40px;
+  color: #003366;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+/* Link Hover Effect */
+.view-all-testimonials:hover {
+  text-decoration: underline;
+}
+
+/* =====================================================================
+   FOOTER
+   Simple copyright footer with dark background
+   ===================================================================== */
+footer {
+  background: #111;         /* Dark background */
+  color: #ccc;              /* Light gray text */
+  text-align: center;
+  padding: 30px;
+  font-size: 0.95rem;
+}
+
+/* =====================================================================
+   RESPONSIVE MEDIA QUERIES
+   Adjusts layout and styling for different screen sizes
+   ===================================================================== */
+
+/* ===== MOBILE STYLES (screens up to 768px) ===== */
+@media (max-width: 768px) {
+  /* On mobile, make the CTA bar full-width so it doesn't cover content */
+  .cta-top {
+    position: static;       /* Remove fixed positioning */
+    width: 100%;
+    border-radius: 0;       /* Square corners for full-width */
+    justify-content: center;
+    padding: 16px;
+  }
+
+  /* Adjust hero layout on mobile for better readability */
+  .hero {
+    height: 80vh;           /* Slightly shorter on mobile */
+    text-align: center;     /* Center text on mobile */
+    justify-content: center; /* Center content horizontally */
+  }
+
+  /* Remove left margin from hero content on mobile */
+  .hero-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  /* Reduce heading size on mobile */
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  /* Show hamburger menu on mobile */
+  .hamburger {
+    display: block;
+  }
+
+  /* Hide navigation menu by default on mobile */
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: #111;
+  }
+
+  /* Show menu when checkbox is checked */
+  .menu-toggle:checked ~ .nav-menu {
+    display: flex;
+  }
+
+  /* Space navbar items on mobile */
+  .navbar {
+    justify-content: space-between;
+  }
+
+  /* Reduce gap between cards on mobile */
+  .card-container {
+    gap: 20px;
+  }
+
+  /* Reduce gap between testimonials on mobile */
+  .testimonial-grid {
+    gap: 20px;
+  }
+}
+
+/* ===== DESKTOP STYLES (screens 769px and above) ===== */
+
+@media (min-width: 769px) {
+  /* Desktop only - Grid works better here for a clean four-column card layout */
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);   /* 4 equal columns */
+    gap: 30px;                               /* Same gap as before */
+    justify-items: center;                   /* Centers cards horizontally */
+  }
+
+  /* Limit card width so they don't stretch too wide on large screen */
+  .feature-card {
+    max-width: 300px;      
+    width: 100%;           
+  }
+
+  /* Display testimonials side-by-side on larger screens */
+  .testimonial-grid {
+    display: flex;          
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+  }
+  /* Keep testimonial cards visually balanced */
+  .testimonial {
+    flex: 1;
+    max-width: 320px;
+  }
+}
+
+/* =====================================================================
+   CLINIC GALLERY 
+   Captioned image section showcasing the clinic environment
+   ===================================================================== */
+   .clinic-gallery {
+    padding: 80px 20px;
+    text-align: center;
+    background: #f8f9fa;
+  }
+  
+  .clinic-gallery figure {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .clinic-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  .clinic-gallery figcaption {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: #003366;
+  }

@@ -1,1 +1,360 @@
+/* =====================================================================
+   STICKY NAVBAR
+   Navigation bar that sticks to top of viewport when scrolling
+   Uses a semi-transparent background with blur for visual depth
+   ===================================================================== */
+   .sticky-header {
+    position: sticky;
+    top: 0;
+    background: rgba(17, 17, 17, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Navbar Container */
+  .navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    position: relative; /* Reference point for absolutely positioned mobile menu */
+  }
+  
+  /* =====================================================================
+     HAMBURGER MENU (Mobile Only)
+     Three-line icon for mobile menu toggle
+     Hidden by default, shown only on small screens
+     ===================================================================== */
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Ensure hamburger is above menu */
+  }
+  
+  /* Hamburger Lines */
+  .hamburger span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: #fff;
+    margin: 6px 0;
+    transition: 0.3s;
+  }
+  
+  /* =====================================================================
+     HIDDEN CHECKBOX FOR MENU TOGGLE
+     Uses CSS checkbox hack for pure CSS mobile menu
+     ===================================================================== */
+  .menu-toggle {
+    display: none; /* Hides the actual checkbox */
+  }
+  
+  /* =====================================================================
+     NAVIGATION MENU
+     Horizontal list of navigation links
+     Transforms to vertical dropdown on mobile
+     ===================================================================== */
+  .nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navigation Link Styles */
+  .nav-menu a {
+    color: #eee;
+    text-decoration: none;
+    padding: 0 20px;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  /* Navigation Link Hover and Active States */
+  .nav-menu a:hover,
+  .nav-menu a.active {
+    color: #ffd700;
+  }
+  
+  /* =====================================================================
+     FOOTER STYLES
+     ===================================================================== */
+  footer {
+    background: #111;
+    color: #ccc;
+    text-align: center;
+    padding: 30px;
+    font-size: 0.95rem;
+    margin-top: auto; /* Pushes footer to bottom */
+  }
+  
+  /* =====================================================================
+     BODY STYLES
+     Base styles for entire page including font family and colors
+     ===================================================================== */
+  body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* =====================================================================
+     MAIN CONTACT PAGE CONTAINER
+     Wraps all contact page content
+     Uses flexbox to control vertical flow and spacing
+     ===================================================================== */
+  .contact-page {
+    flex: 1; /* Grows to fill available space, pushing footer down */
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* =====================================================================
+     PAGE HEADING
+     Large, bold heading at top of contact page
+     Draws attention and clearly identifies page purpose
+     ===================================================================== */
+  .page-heading {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #003366;
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  /* =====================================================================
+     TWO-COLUMN LAYOUT CONTAINER
+     Flexible container that holds both contact details and form
+     Responsive: stacks into a single column on mobile
+     ===================================================================== */
+  .contact-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    max-width: 1200px;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  /* =====================================================================
+     CONTACT DETAILS SECTION - LEFT SIDE
+     Displays clinic's contact information
+     White card with shadow for visual separation
+     ===================================================================== */
+  .contact-details {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Contact Details Section Heading */
+  .contact-details h2 {
+    font-size: 2rem;
+    color: #003366;
+    margin-bottom: 30px;
+  }
+  
+  /* Contact Details Paragraphs */
+  .contact-details p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+  }
+  
+  /* Bold Labels in Contact Details */
+  .contact-details strong {
+    color: #00796b;
+  }
+  
+  /* =====================================================================
+     CONTACT FORM SECTION - RIGHT SIDE
+     Interactive form for visitors to send messages
+     Light blue background to differentiate from contact details
+     ===================================================================== */
+  .contact-form {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    background: #e0f7fa;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Contact Form Heading */
+  .contact-form h2 {
+    font-size: 2rem;
+    color: #00796b;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  /* =====================================================================
+     FORM GROUP
+     Container for each form field (label + input)
+     Provides consistent spacing between fields
+     ===================================================================== */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Form Field Labels */
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #00796b;
+    font-size: 1.1rem;
+  }
+  
+  /* =====================================================================
+     INPUT FIELDS AND TEXTAREA
+     Styling for all form input fields and message textarea
+     Includes focus states and validation styling
+     ===================================================================== */
+  .input-field,
+  textarea.input-field {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Input Field Focus State */
+  .input-field:focus,
+  textarea.input-field:focus {
+    outline: none;
+    border-color: #00796b;
+    background-color: #fff;
+  }
+  
+  /* Valid Input Styling */
+  .input-field:valid {
+    background-color: #e8f5e9;
+  }
+  
+  /* Invalid Input Styling */
+  .input-field:invalid {
+    background-color: #ffebee;
+  }
+  
+  /* =====================================================================
+     SUBMIT BUTTON
+     Primary action button for form submission
+     Full-width with hover effect for feedback
+     ===================================================================== */
+  .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background-color: #00796b;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Submit Button Hover State */
+  .submit-btn:hover {
+    background-color: #004d40;
+  }
+  
+  /* =====================================================================
+   RESPONSIVE DESIGN - MOBILE STYLES
+   Handles layout and navigation behavior for screens 768px and below 
+   Converts desktop layouts into a mobile-friendly stacked design
+   ===================================================================== */
+@media (max-width: 768px) {
+  /* Display hamburger icon on mobile screens */
+  .hamburger {
+    display: block;
+  }
 
+  /* Push hamburger and menu container to opposite ends on mobile */
+  .navbar {
+    justify-content: space-between;
+  }
+
+  /* Hide horizontal navigation menu by default on mobile */
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: #111;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Reveal mobile menu when hamburger (checkbox) is toggled */
+  .menu-toggle:checked ~ .nav-menu {
+    display: flex;
+  }
+
+  /* Make navigation items full-width for easy tapping */
+  .nav-menu li {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #333;
+  }
+  /* Increase clickable area for mobile navigation links */
+  .nav-menu a {
+    display: block;
+    padding: 15px 20px;
+  }
+
+  /* Reduce page padding to fit smaller screens comfortably */
+  .contact-page {
+    padding: 40px 20px;
+  }
+
+  /* Scale down main heading for better mobile readability */
+  .page-heading {
+    font-size: 2.4rem;
+    margin-bottom: 40px;
+  }
+
+  /* Stack contact details and form vertically on mobile */
+  .contact-layout {
+    flex-direction: column;
+    gap: 40px;
+    align-items: center; /* Centers the cards */
+  }
+
+  /* Constrain section width so content doesn't stretch edge to edge */
+  .contact-details,
+  .contact-form {
+    max-width: 500px;
+    width: 90%; /* 90% width for better side padding */
+    padding: 30px;
+  }
+
+  /* Adjust form heading size on mobile screens */
+  .contact-form h2 {
+    font-size: 1.8rem;
+  }
+}

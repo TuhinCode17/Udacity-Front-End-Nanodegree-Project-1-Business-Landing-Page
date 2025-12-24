@@ -1,0 +1,297 @@
+/* =====================================================================
+   STICKY NAVBAR
+   Navigation bar that sticks to top of viewport when scrolling
+   Uses semi-transparent background with blur effect
+   ===================================================================== */
+   .sticky-header {
+    position: sticky;
+    top: 0;
+    background: rgba(17, 17, 17, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Navbar Container */
+  .navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    position: relative; /* Provides a reference point for the absolutely positioned mobile menu */
+  }
+  
+  /* =====================================================================
+     HAMBURGER MENU (Mobile Only)
+     Three-line icon for mobile menu toggle
+     Hidden by default, shown only on small screens
+     ===================================================================== */
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Ensure hamburger is above menu */
+  }
+  
+  /* Hamburger Lines */
+  .hamburger span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: #fff;
+    margin: 6px 0;
+    transition: 0.3s;
+  }
+  
+  /* =====================================================================
+     HIDDEN CHECKBOX FOR MENU TOGGLE
+     Uses CSS checkbox hack for pure CSS mobile menu
+     ===================================================================== */
+  .menu-toggle {
+    display: none; /* Hides the actual checkbox */
+  }
+  
+  /* =====================================================================
+     NAVIGATION MENU
+     Horizontal list of navigation links
+     Transforms to vertical dropdown on mobile
+     ===================================================================== */
+  .nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navigation Link Styles */
+  .nav-menu a {
+    color: #eee;
+    text-decoration: none;
+    padding: 0 20px;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  /* Navigation Link Hover and Active States */
+  .nav-menu a:hover,
+  .nav-menu a.active {
+    color: #ffd700;
+  }
+  
+  /* =====================================================================
+     FOOTER STYLES
+     ===================================================================== */
+  footer {
+    background: #111;
+    color: #ccc;
+    text-align: center;
+    padding: 30px;
+    font-size: 0.95rem;
+    margin-top: auto; /* Pushes footer to bottom */
+  }
+  
+  /* =====================================================================
+     BODY STYLES
+     Base styles for entire page
+     Uses flexbox to ensure footer sticks to bottom if content is short
+     ===================================================================== */
+  body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* =====================================================================
+     PAGE CONTAINER
+     Main wrapper for all page content
+     Uses flexbox for vertical centering and layout control
+     ===================================================================== */
+  .page-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  
+  /* =====================================================================
+     HEADING SECTION
+     Container for page title
+     Provides spacing and centers the heading
+     ===================================================================== */
+  .heading-container {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  /* Main Page Heading */
+  .heading-container h1 {
+    font-size: 2.8rem;
+    color: #003366;
+    font-weight: bold;
+  }
+  
+  /* =====================================================================
+     CARD CONTAINER
+     Flexbox container for service cards
+     Responsive grid-like behavior that wraps cards as needed
+     ===================================================================== */
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    max-width: 1400px;
+    width: 100%;
+  }
+  
+  /* =====================================================================
+     INDIVIDUAL SERVICE CARD
+     Card component showcasing a single service
+     Includes hover effects and responsive behavior
+     ===================================================================== */
+  .service-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    padding: 20px;
+  }
+  
+  /* Service Card Hover Effect */
+  .service-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* =====================================================================
+     SERVICE IMAGE
+     Image displayed at top of each service card
+     Uses object-fit for proper cropping without distortion
+     ===================================================================== */
+  .service-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  
+  /* =====================================================================
+     SERVICE INFO SECTION
+     Container for text content (title and description)
+     Provides padding for comfortable reading
+     ===================================================================== */
+  .service-info {
+    padding: 10px 20px 20px;
+  }
+  
+  .service-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #003366;
+    margin-bottom: 12px;
+  }
+  
+  .service-description {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.6;
+  }
+  
+  /* =====================================================================
+     RESPONSIVE DESIGN - TABLET STYLES
+     Adjustments for screens between 768px and 1024px
+     ===================================================================== */
+  @media (max-width: 1024px) {
+    .card-container {
+      gap: 30px;
+    }
+  
+    .service-card {
+      max-width: 400px;
+    }
+  }
+  
+  /* =====================================================================
+     RESPONSIVE DESIGN - MOBILE STYLES
+     Adjustments for screens 768px and smaller
+     Cards stack vertically with optimized sizing
+     ===================================================================== */
+  @media (max-width: 768px) {
+    /* Show hamburger menu on mobile */
+    .hamburger {
+      display: block;
+    }
+  
+    /* Adjust navbar for mobile */
+    .navbar {
+      justify-content: space-between;
+    }
+  
+    /* Hide navigation menu by default on mobile */
+    .nav-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: #111;
+      padding: 0;
+      margin: 0;
+    }
+  
+    /* Show menu when checkbox is checked */
+    .menu-toggle:checked ~ .nav-menu {
+      display: flex;
+    }
+  
+    /* Full-width menu items on mobile */
+    .nav-menu li {
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid #333;
+    }
+  
+    .nav-menu a {
+      display: block;
+      padding: 15px 20px;
+    }
+  
+    /* Reduce heading size on mobile */
+    .heading-container h1 {
+      font-size: 2.2rem;
+    }
+  
+    /* Reduce page padding on mobile */
+    .page-container {
+      padding: 30px 15px;
+    }
+  
+    /* Full-width cards on mobile */
+    .service-card {
+      max-width: 100%;
+      padding: 15px;
+    }
+  
+    /* Reduce image height on mobile */
+    .service-image {
+      height: 200px;
+    }
+  }
